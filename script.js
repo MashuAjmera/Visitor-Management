@@ -1,6 +1,5 @@
 let visitors = [];
 var checkin = event => {
-  event.preventDefault();
   let visitor = {
     id: Date.now(),
     name: document.getElementById("visitor-name").value,
