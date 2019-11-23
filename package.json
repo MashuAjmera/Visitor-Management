@@ -1,0 +1,21 @@
+{
+  "name": "visitor-management",
+  "version": "1.0.0",
+  "description": "event management system",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MashuAjmera/Visitor-Management.git"
+  },
+  "author": "\"Mashu Ajmera\"",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MashuAjmera/Visitor-Management/issues"
+  },
+  "homepage": "https://github.com/MashuAjmera/Visitor-Management#readme"
+}
