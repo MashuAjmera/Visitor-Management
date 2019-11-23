@@ -1,0 +1,22 @@
+[
+  {
+    "name": "visitor 1",
+    "phone": 9876543210,
+    "email": "visitor1@example.com",
+    "host": "host-id",
+    "hostName": "host 1",
+    "addressVisited": "host address 1",
+    "checkin": 98765,
+    "checkout": 98765
+  },
+  {
+    "name": "visitor 2",
+    "phone": 9876543210,
+    "email": "visitor1@example.com",
+    "host": "host-id",
+    "hostName": "host 1",
+    "addressVisited": "host address 1",
+    "checkin": 98765,
+    "checkout": 98765
+  }
+]
