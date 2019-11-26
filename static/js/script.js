@@ -1,4 +1,4 @@
-fetch("./hosts.json")
+fetch("./static/json/hosts.json")
   .then(function(resp) {
     return resp.json();
   })
