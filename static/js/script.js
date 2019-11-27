@@ -18,7 +18,6 @@ fetch("./static/json/hosts.json")
   });
 
 // Collecting Checkin Information
-let visitors = [];
 let visitor = {};
 var checkin = event => {
   visitor = {
@@ -36,18 +35,40 @@ var checkin = event => {
       ).innerText;
     }
   }
-  visitors.push(visitor);
-  console.log(visitors);
+  console.log(visitor);
 };
 
 // Collecting Checkout Information
 var checkout = event => {
   visitor.checkout = Date.now();
-  console.log(visitors);
+  fetch("/checkout", {
+    method: "post",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify({
+      name: visitor.name,
+      email: visitor.email,
+      phone: visitor.phone,
+      checkin: visitor.checkin,
+      checkout: visitor.checkout,
+      hostName: visitor.hostName,
+      addressVisited: visitor.addressVisited
+    })
+  })
+    .then(function(res) {
+      console.log(res);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+  console.log(visitor);
 };
 
 // Function Calling
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("checkin").addEventListener("click", checkin);
-  document.getElementById("checkout").addEventListener("click", checkout);
+  document.getElementById("checkin").addEventListener("click", checkin, false);
+  document
+    .getElementById("checkout")
+    .addEventListener("click", checkout, false);
 });

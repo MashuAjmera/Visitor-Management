@@ -51,16 +51,13 @@ app.post("/checkin", (req, res) => {
   const output = `
     <p>You have a new visior request</p>
     <h3>Visitor Details</h3>
-    <ul>  
+    <ul>
       <li>Name: ${req.body.visiorName}</li>
       <li>Email: ${req.body.visitorEmail}</li>
       <li>Phone: ${req.body.visitorPhone}</li>
     </ul>
   `;
-
-  const textoutput = `New Visitor Request- Name: ${req.body.visiorName}, Phone: ${req.body.vistorPhone}, Email: ${req.body.visitorEmail}`;
-
-  // setup email data with unicode symbols
+  const textoutput = `New Visitor Request- Name: ${req.body.visitorName}, Phone: ${req.body.visitorPhone}, Email: ${req.body.visitorEmail}`;
   let mailOptions = {
     from: '"Mashu Dopamine" <mashu@dopamineplanet.com>', // sender address
     to: "mashuajmera@gmail.com", // list of receivers
@@ -68,8 +65,6 @@ app.post("/checkin", (req, res) => {
     text: textoutput, // plain text body
     html: output // html body
   };
-
-  // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log(error);
@@ -77,8 +72,6 @@ app.post("/checkin", (req, res) => {
     console.log("Message sent: %s", info.messageId);
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   });
-
-  // Message
   client.messages
     .create({
       body: textoutput,
@@ -92,36 +85,38 @@ app.post("/checkin", (req, res) => {
       });
       console.log("Message SID: " + message.sid);
     });
+
+  console.log(textoutput);
 });
 
 // ##########################
 // Checkout
 app.post("/checkout", (req, res) => {
+  res.send(req.body);
+
   const checkoutput = `
     <p>Thanks for the visit</p>
     <h3>Visit Details</h3>
-    <ul>  
-      <li>Name: ${req.body.visiorName}</li>
-      <li>Phone: ${req.body.visitorPhone}</li>
-      <li>Check-in Time: ${req.body.visitorPhone}</li>
-      <li>Check-out Time: ${req.body.visitorPhone}</li>
-      <li>Host Name: ${req.body.visitorPhone}</li>
-      <li>Address Visited: ${req.body.visitorPhone}</li>
+    <ul>
+      <li>Name: ${req.body.name}</li>
+      <li>Phone: ${req.body.phone}</li>
+      <li>Check-in Time: ${req.body.checkin}</li>
+      <li>Check-out Time: ${req.body.checkout}</li>
+      <li>Host Name: ${req.body.hostName}</li>
+      <li>Address Visited: ${req.body.addressVisited}</li>
     </ul>
   `;
 
-  const textcheckoutput = `Visit Details- Name: ${req.body.visiorName}, Phone: ${req.body.vistorPhone}, Check-in time: ${req.body.visitorEmail}, Check-out Time: ${req.body.visitorEmail}, Host Name: ${req.body.visitorEmail}, Address Visited: ${req.body.visitorEmail}`;
+  const textcheckoutput = `Visit Details- Name: ${req.body.name}, Phone: ${req.body.phone}, Check-in time: ${req.body.checkin}, Check-out Time: ${req.body.checkout}, Host Name: ${req.body.hostName}, Address Visited: ${req.body.addressVisited}`;
 
-  // setup email data with unicode symbols
   let mailOptions = {
     from: '"Mashu Ajmera" <mashu@dopamineplanet.com>', // sender address
-    to: "mashuajmera@gmail.com", // list of receivers
+    to: `${req.body.email}`, // list of receivers
     subject: "Your Visit Details", // Subject line
     text: textcheckoutput, // plain text body
     html: checkoutput // html body
   };
 
-  // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log(error);
@@ -130,10 +125,12 @@ app.post("/checkout", (req, res) => {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   });
 
-  res.render("contact", {
-    mail: "The visit details have been mailed to your email id"
-  });
+  // res.render("contact", {
+  //   mail: "The visit details have been mailed to your email id"
+  // });
+
+  console.log(textcheckoutput);
 });
 
 //Run on Localhost PORT 5000
-app.listen(5000, () => console.log("Server started..."));
+app.listen(3000, () => console.log("Server started..."));
