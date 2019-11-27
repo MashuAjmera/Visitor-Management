@@ -1,13 +1,37 @@
 [
   {
-    "name": "name 1",
-    "email": "example1@email.com",
-    "phone": 1234567890,
-    "address": "address 1"
+    "name": "Mashu Ajmera",
+    "email": "mashuajmera@gmail.com",
+    "phone": 7073637246,
+    "address": "D711, BH3, LNMIIT, Jaipur 302031"
   },
   {
-    "name": "name 2",
-    "email": "example2@email.com",
+    "name": "Mayank Aggarwal",
+    "email": "17dcs006@mail.com",
+    "phone": 1234567890,
+    "address": "address 2"
+  },
+  {
+    "name": "Mayank Aggarwal",
+    "email": "17dcs006@mail.com",
+    "phone": 1234567890,
+    "address": "address 2"
+  },
+  {
+    "name": "Mayank Aggarwal",
+    "email": "17dcs006@mail.com",
+    "phone": 1234567890,
+    "address": "address 2"
+  },
+  {
+    "name": "Mayank Aggarwal",
+    "email": "17dcs006@mail.com",
+    "phone": 1234567890,
+    "address": "address 2"
+  },
+  {
+    "name": "Mayank Aggarwal",
+    "email": "17dcs006@mail.com",
     "phone": 1234567890,
     "address": "address 2"
   }

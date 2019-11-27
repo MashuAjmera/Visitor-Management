@@ -1,8 +1,14 @@
+// Message Tokens
+const accountSid = "AC101d60fbb98a39816910f7f10d19784f";
+const authToken = "310048dc4b17e6c739856a8337efa8cc";
+
+// Importing ibraries
 const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const nodemailer = require("nodemailer");
+const client = require("twilio")(accountSid, authToken);
 
 const app = express();
 
@@ -20,6 +26,7 @@ app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Homepage
 app.get("/", (req, res) => {
   res.render("contact");
 });
@@ -33,8 +40,6 @@ app.post("/send", (req, res) => {
       <li>Email: ${req.body.email}</li>
       <li>Phone: ${req.body.phone}</li>
     </ul>
-    <h3>Message</h3>
-    <p>${req.body.message}</p>
   `;
 
   // create reusable transporter object using the default SMTP transport
@@ -67,9 +72,24 @@ app.post("/send", (req, res) => {
     }
     console.log("Message sent: %s", info.messageId);
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-
-    res.render("contact", { msg: "Email has been sent" });
   });
+
+  // Message
+  client.messages
+    .create({
+      body: `New Visitor Request- Name: ${req.body.visior - name} Phone: ${req
+        .body.visior - phone} Email: ${req.body.visior - email} `,
+      from: "+19712735613",
+      to: "+917073637246"
+    })
+    .then(message => {
+      res.render("contact", {
+        sms: "SMS has been sent to the Host",
+        msg: "Email has been sent to the Host"
+      });
+      console.log(message.sid);
+    });
 });
 
+//Run on Localhost PORT 5000
 app.listen(5000, () => console.log("Server started..."));
