@@ -1,3 +1,4 @@
+// Loading Hosts from Database
 fetch("./static/json/hosts.json")
   .then(function(resp) {
     return resp.json();
@@ -16,6 +17,7 @@ fetch("./static/json/hosts.json")
     }
   });
 
+// Collecting Checkin Information
 let visitors = [];
 let visitor = {};
 var checkin = event => {
@@ -38,11 +40,13 @@ var checkin = event => {
   console.log(visitors);
 };
 
+// Collecting Checkout Information
 var checkout = event => {
   visitor.checkout = Date.now();
   console.log(visitors);
 };
 
+// Function Calling
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("checkin").addEventListener("click", checkin);
   document.getElementById("checkout").addEventListener("click", checkout);

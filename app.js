@@ -31,37 +31,41 @@ app.get("/", (req, res) => {
   res.render("contact");
 });
 
-app.post("/send", (req, res) => {
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+  host: "smtp.hostinger.in",
+  port: 587,
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: "mashu@dopamineplanet.com", // generated ethereal user
+    pass: "3@Dopamineplanet" // generated ethereal password
+  },
+  tls: {
+    rejectUnauthorized: false
+  }
+});
+
+// ##################################
+// Checkin
+app.post("/checkin", (req, res) => {
   const output = `
     <p>You have a new visior request</p>
     <h3>Visitor Details</h3>
     <ul>  
-      <li>Name: ${req.body.name}</li>
-      <li>Email: ${req.body.email}</li>
-      <li>Phone: ${req.body.phone}</li>
+      <li>Name: ${req.body.visiorName}</li>
+      <li>Email: ${req.body.visitorEmail}</li>
+      <li>Phone: ${req.body.visitorPhone}</li>
     </ul>
   `;
 
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtp.hostinger.in",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: "mashu@dopamineplanet.com", // generated ethereal user
-      pass: "3@Dopamineplanet" // generated ethereal password
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
+  const textoutput = `New Visitor Request- Name: ${req.body.visiorName}, Phone: ${req.body.vistorPhone}, Email: ${req.body.visitorEmail}`;
 
   // setup email data with unicode symbols
   let mailOptions = {
     from: '"Mashu Dopamine" <mashu@dopamineplanet.com>', // sender address
     to: "mashuajmera@gmail.com", // list of receivers
     subject: "New Visitor Request", // Subject line
-    text: "Hello world?", // plain text body
+    text: textoutput, // plain text body
     html: output // html body
   };
 
@@ -77,18 +81,58 @@ app.post("/send", (req, res) => {
   // Message
   client.messages
     .create({
-      body: `New Visitor Request- Name: ${req.body.visior - name} Phone: ${req
-        .body.visior - phone} Email: ${req.body.visior - email} `,
+      body: textoutput,
       from: "+19712735613",
       to: "+917073637246"
     })
     .then(message => {
       res.render("contact", {
-        sms: "SMS has been sent to the Host",
-        msg: "Email has been sent to the Host"
+        sms: "SMS has been sent to your Host",
+        msg: "Email has been sent to your Host"
       });
-      console.log(message.sid);
+      console.log("Message SID: " + message.sid);
     });
+});
+
+// ##########################
+// Checkout
+app.post("/checkout", (req, res) => {
+  const checkoutput = `
+    <p>Thanks for the visit</p>
+    <h3>Visit Details</h3>
+    <ul>  
+      <li>Name: ${req.body.visiorName}</li>
+      <li>Phone: ${req.body.visitorPhone}</li>
+      <li>Check-in Time: ${req.body.visitorPhone}</li>
+      <li>Check-out Time: ${req.body.visitorPhone}</li>
+      <li>Host Name: ${req.body.visitorPhone}</li>
+      <li>Address Visited: ${req.body.visitorPhone}</li>
+    </ul>
+  `;
+
+  const textcheckoutput = `Visit Details- Name: ${req.body.visiorName}, Phone: ${req.body.vistorPhone}, Check-in time: ${req.body.visitorEmail}, Check-out Time: ${req.body.visitorEmail}, Host Name: ${req.body.visitorEmail}, Address Visited: ${req.body.visitorEmail}`;
+
+  // setup email data with unicode symbols
+  let mailOptions = {
+    from: '"Mashu Ajmera" <mashu@dopamineplanet.com>', // sender address
+    to: "mashuajmera@gmail.com", // list of receivers
+    subject: "Your Visit Details", // Subject line
+    text: textcheckoutput, // plain text body
+    html: checkoutput // html body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  });
+
+  res.render("contact", {
+    mail: "The visit details have been mailed to your email id"
+  });
 });
 
 //Run on Localhost PORT 5000
