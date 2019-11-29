@@ -1,5 +1,5 @@
 // Loading Hosts from Database
-fetch("./static/json/hosts.json")
+fetch("/api/hosts")
   .then(function(resp) {
     return resp.json();
   })
@@ -27,6 +27,7 @@ var checkin = event => {
     phone: document.getElementById("visitor-phone").value,
     email: document.getElementById("visitor-email").value
   };
+
   let hosts = document.getElementsByName("host");
   for (var i = 0; i < hosts.length; i++) {
     if (hosts[i].checked) {
@@ -38,6 +39,7 @@ var checkin = event => {
       ).innerText;
     }
   }
+
   fetch("/checkin", {
     method: "post",
     headers: {
@@ -98,9 +100,34 @@ var checkout = event => {
   console.log(visitor);
 };
 
+// Add Host
+var addhost = event => {
+  fetch("/addhost", {
+    method: "post",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify({
+      hostName: document.getElementById("visitor-name").value,
+      hostPhone: document.getElementById("visitor-phone").value,
+      hostEmail: document.getElementById("visitor-email").value,
+      hostAddress: document.getElementById("host-address").value
+    })
+  })
+    .then(function(res) {
+      console.log(res);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+  window.location.reload();
+  console.log("Host Added");
+};
+
 // Function Calling
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("checkin").addEventListener("click", checkin);
+  document.getElementById("addhost").addEventListener("click", addhost);
   document
     .getElementById("checkout")
     .addEventListener("click", checkout, false);

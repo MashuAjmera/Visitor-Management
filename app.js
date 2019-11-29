@@ -161,6 +161,40 @@ app.post("/checkout", (req, res) => {
   console.log(textcheckoutput);
 });
 
+// ######################################## Add Host
+app.post("/addhost", (req, res) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var newHost = {
+      name: req.body.hostName,
+      email: req.body.hostEmail,
+      phone: req.body.hostPhone,
+      address: req.body.hostAddress
+    };
+    dbo.collection("hosts").insertOne(newHost, function(err, res) {
+      if (err) throw err;
+      db.close();
+      console.log("New host added");
+    });
+  });
+});
+
+app.get("/api/hosts", (req, res) => {
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    dbo
+      .collection("hosts")
+      .find({})
+      .toArray(function(err, hosts) {
+        if (err) throw err;
+        res.send(hosts);
+        db.close();
+      });
+  });
+});
+
 // ########################################## Run on Localhost
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log("Server started on PORT " + PORT));

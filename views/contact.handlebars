@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    {{!-- <meta http-equiv="Content-Security-Policy"
-        content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" /> --}}
     {{!-- <link rel="shortcut icon" type="image/png" href="/favicon.ico" /> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -13,21 +11,29 @@
 </head>
 
 <body id="" class="container">
-    <h1 id="" class="at-center pink">VISITOR MANAGEMENT</h1>
+    <h1 id="" class="at-center title">VISITOR MANAGEMENT</h1>
     {{msg}} {{sms}} {{mail}}
     <form class="page-container" id="">
-        <h2 id="" class="at-center">ENTER YOUR DETAILS</h2>
+        <h2 id="" class="at-center haeding">ENTER YOUR DETAILS</h2>
         <div id="" class="visitor-container">
-            <div id="" class="visitor-field"><input type="text" id="visitor-name" class="input-box" name="visitorName"
+            <div id="" class="input-field"><input type="text" id="visitor-name" class="input-box" name="visitorName"
                     placeholder="Full name" required /></div>
-            <div id="" class="visitor-field"><input type="tel" name="visitorPhone" id="visitor-phone" class="input-box"
+            <div id="" class="input-field"><input type="tel" name="visitorPhone" id="visitor-phone" class="input-box"
                     placeholder="Phone Number" required /></div>
-            <div id="" class="visitor-field"><input type="email" name="visitorEmail" id="visitor-email"
-                    class="input-box" placeholder="Email Address" required /></div>
+            <div id="" class="input-field"><input type="email" name="visitorEmail" id="visitor-email" class="input-box"
+                    placeholder="Email Address" required /></div>
         </div>
-        <h2 id="" class="at-center">SELECT HOST</h2>
+        <h2 id="" class="at-center haeding">SELECT | ADD AS HOST</h2>
         <div id="host-container" class="host-container"></div>
+        <div class="input-container" id="">
+            <h3 id="" class="add-title">ADD YOURSELF AS HOST</h3>
+            <div id="" class="add-container">
+                <div id="" class="input-field"><input type="text" name="hostAddress" id="host-address" class="input-box"
+                        placeholder="Enter Your Office Address" required /></div>
+            </div>
+        </div>
         <div class="button-container" id="">
+            <button id="addhost" class="button">ADD HOST</button>
             <button id="checkin" class="button">CHECK IN</button>
             <button id="checkout" class="button" type="reset" disabled>CHECK OUT</button>
         </div>
