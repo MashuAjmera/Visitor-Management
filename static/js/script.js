@@ -60,6 +60,10 @@ var checkin = event => {
     .catch(function(err) {
       console.log(err);
     });
+
+  document.getElementById("checkin").disabled = true;
+  document.getElementById("checkout").disabled = false;
+
   console.log(visitor);
 };
 
@@ -87,6 +91,10 @@ var checkout = event => {
     .catch(function(err) {
       console.log(err);
     });
+
+  document.getElementById("checkout").disabled = true;
+  document.getElementById("checkin").disabled = false;
+
   console.log(visitor);
 };
 

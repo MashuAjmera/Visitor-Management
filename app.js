@@ -74,47 +74,48 @@ app.post("/checkin", (req, res) => {
     html: output // html body
   };
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("mydb");
-    var newVisitor = {
-      name: req.body.name,
-      email: req.body.email,
-      phone: req.body.phone,
-      checkin: req.body.checkin,
-      hostName: req.body.hostName,
-      hostEmail: req.body.hostEmail,
-      hostPhone: req.body.hostPhone,
-      addressVisited: req.body.addressVisited
-    };
-    dbo.collection("visitors").insertOne(newVisitor, function(err, res) {
-      if (err) throw err;
-      db.close();
-      console.log("New visitor added");
-    });
-  });
+  // MongoClient.connect(url, function(err, db) {
+  //   if (err) throw err;
+  //   var dbo = db.db("mydb");
+  //   var newVisitor = {
+  //     name: req.body.name,
+  //     email: req.body.email,
+  //     phone: req.body.phone,
+  //     checkin: req.body.checkin,
+  //     hostName: req.body.hostName,
+  //     hostEmail: req.body.hostEmail,
+  //     hostPhone: req.body.hostPhone,
+  //     addressVisited: req.body.addressVisited
+  //   };
+  //   dbo.collection("visitors").insertOne(newVisitor, function(err, res) {
+  //     if (err) throw err;
+  //     db.close();
+  //     console.log("New visitor added");
+  //   });
+  // });
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  });
+  // transporter.sendMail(mailOptions, (error, info) => {
+  //   if (error) {
+  //     return console.log(error);
+  //   }
+  //   console.log("Message sent: %s", info.messageId);
+  //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // });
 
-  client.messages
-    .create({
-      body: textoutput,
-      from: "+19712735613",
-      to: "+917073637246"
-    })
-    .then(message => {
-      res.render("contact", {
-        sms: "SMS has been sent to your Host",
-        msg: "Email has been sent to your Host"
-      });
-      console.log("Message SID: " + message.sid);
-    });
+  // client.messages
+  //   .create({
+  //     body: textoutput,
+  //     from: "+19712735613",
+  //     to: "+917073637246"
+  //   })
+  //   .then(message => {
+  //     res.render("contact", {
+  //       sms: "SMS has been sent to your Host",
+  //       msg: "Email has been sent to your Host"
+  //     });
+  //     console.log("Message SID: " + message.sid);
+  //   });
+
   console.log(textoutput);
 });
 
@@ -145,13 +146,13 @@ app.post("/checkout", (req, res) => {
     html: checkoutput // html body
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  });
+  // transporter.sendMail(mailOptions, (error, info) => {
+  //   if (error) {
+  //     return console.log(error);
+  //   }
+  //   console.log("Message sent: %s", info.messageId);
+  //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // });
 
   // res.render("contact", {
   //   mail: "The visit details have been mailed to your email id"
