@@ -14,13 +14,28 @@ This should trigger an email and an SMS to the host informing him of the details
 
 ## Tech Stack Used
 
-Frontend: HTML5, CSS3, JS
-Backend: Node.Js
-Storage: JSON (used because less information daatbase)
+Frontend: HTML5, CSS3, JS | Server Environment: Node.Js | Backend: Express | Database: MongoDb
 
 ## Workflow
 
 Once visitor checks in and enters his details in the web-app, Host gets an email and an SMS stating the visitor details.
 After the meeting or visit is over, and visitor checks out, visitor gets an email stating his visit details.
+
+## Installation Guidelines
+
+### Prerequisites
+
+[Node JS](https://nodejs.org/en/download/) | [MongoDb](https://www.mongodb.com/download-center/community)
+
+### Execution
+
+Connect MongoDb at PORT [27017](mongodb://localhost:27017/)
+
+```
+npm install
+node app
+```
+
+At the browser, go to [`localhost:5000/`](mongodb://localhost:27017/)
 
 ### Hosted at http://visitormgmt.herokuapp.com
