@@ -23,19 +23,19 @@ After the meeting or visit is over, and visitor checks out, visitor gets an emai
 
 ## Installation Guidelines
 
-### Prerequisites
+### Prerequisite Softwares
 
 [Node JS](https://nodejs.org/en/download/) | [MongoDb](https://www.mongodb.com/download-center/community)
 
 ### Execution
 
-Connect MongoDb at PORT [27017](mongodb://localhost:27017/)
+Connect MongoDb at PORT `27017`
 
 ```
 npm install
 node app
 ```
 
-At the browser, go to [`localhost:5000/`](mongodb://localhost:27017/)
+At the browser, go to `localhost:5000/`
 
 ### Hosted at http://visitormgmt.herokuapp.com
