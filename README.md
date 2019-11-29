@@ -1,6 +1,6 @@
 # Visitor-Management
 
-An entry management software
+An entry management software hosted at http://visitormgmt.herokuapp.com for demo only
 
 ## Problem Solved
 
@@ -42,5 +42,3 @@ node app
 ```
 
 At the browser, go to `localhost:5000/`
-
-### Hosted at http://visitormgmt.herokuapp.com
