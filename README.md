@@ -14,7 +14,10 @@ This should trigger an email and an SMS to the host informing him of the details
 
 ## Tech Stack Used
 
-Frontend: HTML5, CSS3, JS | Server Environment: Node.Js | Backend: Express | Database: MongoDb
+Frontend: HTML5, CSS3, JavaScript  
+Server Environment: Node.Js  
+Backend: Express  
+Database: MongoDb
 
 ## Workflow
 
@@ -29,7 +32,9 @@ After the meeting or visit is over, and visitor checks out, visitor gets an emai
 
 ### Execution
 
-Connect MongoDb at PORT `27017`
+download the repository [here](https://github.com/MashuAjmera/Visitor-Management/archive/master.zip)  
+Connect MongoDb at PORT `27017`  
+Open Terminal at the location of the repository and type:
 
 ```
 npm install
