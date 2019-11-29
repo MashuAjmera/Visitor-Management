@@ -20,6 +20,7 @@ fetch("./static/json/hosts.json")
 // Collecting Checkin Information
 let visitor = {};
 var checkin = event => {
+  event.preventDefault();
   visitor = {
     checkin: Date.now(),
     name: document.getElementById("visitor-name").value,
@@ -30,11 +31,35 @@ var checkin = event => {
   for (var i = 0; i < hosts.length; i++) {
     if (hosts[i].checked) {
       visitor.hostName = document.getElementById(`host-${i}-name`).innerText;
+      visitor.hostEmail = document.getElementById(`host-${i}-email`).innerText;
+      visitor.hostPhone = document.getElementById(`host-${i}-phone`).innerText;
       visitor.addressVisited = document.getElementById(
         `host-${i}-address`
       ).innerText;
     }
   }
+  fetch("/checkin", {
+    method: "post",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify({
+      name: visitor.name,
+      email: visitor.email,
+      phone: visitor.phone,
+      checkin: visitor.checkin,
+      hostName: visitor.hostName,
+      hostEmail: visitor.hostEmail,
+      hostPhone: visitor.hostPhone,
+      addressVisited: visitor.addressVisited
+    })
+  })
+    .then(function(res) {
+      console.log(res);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
   console.log(visitor);
 };
 
@@ -67,7 +92,7 @@ var checkout = event => {
 
 // Function Calling
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("checkin").addEventListener("click", checkin, false);
+  document.getElementById("checkin").addEventListener("click", checkin);
   document
     .getElementById("checkout")
     .addEventListener("click", checkout, false);
