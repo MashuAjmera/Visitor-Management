@@ -72,7 +72,7 @@ app.post("/checkin", (req, res) => {
 
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_rfhqbklp");
     var newVisitor = {
       name: req.body.name,
       email: req.body.email,
@@ -90,27 +90,27 @@ app.post("/checkin", (req, res) => {
     });
   });
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  });
+  // transporter.sendMail(mailOptions, (error, info) => {
+  //   if (error) {
+  //     return console.log(error);
+  //   }
+  //   console.log("Message sent: %s", info.messageId);
+  //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // });
 
-  client.messages
-    .create({
-      body: textoutput,
-      from: process.env.messageFrom,
-      to: req.body.hostPhone
-    })
-    .then(message => {
-      res.render("contact", {
-        sms: "SMS has been sent to your Host",
-        msg: "Email has been sent to your Host"
-      });
-      console.log("Message SID: " + message.sid);
-    });
+  // client.messages
+  //   .create({
+  //     body: textoutput,
+  //     from: process.env.messageFrom,
+  //     to: req.body.hostPhone
+  //   })
+  //   .then(message => {
+  //     res.render("contact", {
+  //       sms: "SMS has been sent to your Host",
+  //       msg: "Email has been sent to your Host"
+  //     });
+  //     console.log("Message SID: " + message.sid);
+  //   });
 
   console.log(textoutput);
 });
@@ -157,7 +157,7 @@ app.post("/checkout", (req, res) => {
 app.post("/addhost", (req, res) => {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_rfhqbklp");
     var newHost = {
       name: req.body.hostName,
       email: req.body.hostEmail,
@@ -175,7 +175,7 @@ app.post("/addhost", (req, res) => {
 app.get("/api/hosts", (req, res) => {
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_rfhqbklp");
     dbo
       .collection("hosts")
       .find({})
