@@ -1,19 +1,15 @@
 // ################################# Initialize
-// Message Tokens
-const accountSid = "AC101d60fbb98a39816910f7f10d19784f";
-const authToken = "310048dc4b17e6c739856a8337efa8cc";
-
 // Importing ibraries
 const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 const path = require("path");
 const nodemailer = require("nodemailer");
-const client = require("twilio")(accountSid, authToken);
+const client = require("twilio")(process.env.accountSid, process.env.authToken);
 const MongoClient = require("mongodb").MongoClient;
 
 // Connect to Database
-const url = "mongodb://localhost:27017/";
+const url = process.env.MONGODB_URI;
 
 // ##################################### Setup
 // Express Setup
@@ -40,12 +36,12 @@ app.get("/", (req, res) => {
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
-  host: "smtp.hostinger.in",
+  host: process.env.mailHost,
   port: 587,
-  secure: false, // true for 465, false for other ports
+  secure: false,
   auth: {
-    user: "mashu@dopamineplanet.com", // generated ethereal user
-    pass: "3@Dopamineplanet" // generated ethereal password
+    user: process.env.mailUser,
+    pass: process.env.mailPass
   },
   tls: {
     rejectUnauthorized: false
@@ -105,8 +101,8 @@ app.post("/checkin", (req, res) => {
   client.messages
     .create({
       body: textoutput,
-      from: "+19712735613",
-      to: "+917073637246"
+      from: process.env.messageFrom,
+      to: req.body.hostPhone
     })
     .then(message => {
       res.render("contact", {
@@ -154,10 +150,6 @@ app.post("/checkout", (req, res) => {
     console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   });
 
-  // res.render("contact", {
-  //   mail: "The visit details have been mailed to your email id"
-  // });
-
   console.log(textcheckoutput);
 });
 
@@ -196,5 +188,5 @@ app.get("/api/hosts", (req, res) => {
 });
 
 // ########################################## Run on Localhost
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log("Server started on PORT " + PORT));

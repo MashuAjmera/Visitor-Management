@@ -21,8 +21,9 @@ fetch("/api/hosts")
 let visitor = {};
 var checkin = event => {
   event.preventDefault();
+  var checkin = new Date();
   visitor = {
-    checkin: Date.now(),
+    checkin: checkin.toGMTString(),
     name: document.getElementById("visitor-name").value,
     phone: document.getElementById("visitor-phone").value,
     email: document.getElementById("visitor-email").value
@@ -71,7 +72,8 @@ var checkin = event => {
 
 // Collecting Checkout Information
 var checkout = event => {
-  visitor.checkout = Date.now();
+  var checkout = new Date();
+  visitor.checkout = checkout.toGMTString();
   fetch("/checkout", {
     method: "post",
     headers: {
@@ -100,7 +102,7 @@ var checkout = event => {
   console.log(visitor);
 };
 
-// Add Host
+// ########################## Add Host
 var addhost = event => {
   fetch("/addhost", {
     method: "post",
