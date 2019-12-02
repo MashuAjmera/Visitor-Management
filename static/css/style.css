@@ -64,10 +64,24 @@
   margin: 20px;
   padding: 10px;
 }
+
+.host-box-add {
+  border: 2px dashed #e31c79;
+}
+
 .host-box:focus,
 .host-box:active,
 .host-box:hover,
 .host-box:focus {
+  color: #fff;
+  background-color: #e31c79;
+}
+
+.host {
+  display: none;
+}
+
+.host:checked + label {
   color: #fff;
   background-color: #e31c79;
 }

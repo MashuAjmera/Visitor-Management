@@ -7,13 +7,13 @@ fetch("/api/hosts")
     for (var i = 0; i < hosts.length; i++) {
       document.getElementById("host-container").innerHTML =
         document.getElementById("host-container").innerHTML +
-        `<div class="host-box"><input type="radio" name="host" value="host-${i}-id" id="host-${i}" class="" required />
-        <label for="host-${i}" class="" id="host-${i}-id">
+        `<input type="radio" name="host" value="host-${i}-id" id="host-${i}" class="host" required /><label for="host-${i}" class="host-box" id="host-${i}-id"><div class="">
+        
   <p class="" id="host-${i}-name">${hosts[i].name}</p>
   <p class="" id="host-${i}-email">${hosts[i].email}</p>
   <p class="" id="host-${i}-phone">${hosts[i].phone}</p>
   <p class="" id="host-${i}-address">${hosts[i].address}</p>
-  </label></div>`;
+  </div></label>`;
     }
   });
 
