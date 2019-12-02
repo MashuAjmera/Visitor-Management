@@ -90,27 +90,27 @@ app.post("/checkin", (req, res) => {
     });
   });
 
-  // transporter.sendMail(mailOptions, (error, info) => {
-  //   if (error) {
-  //     return console.log(error);
-  //   }
-  //   console.log("Message sent: %s", info.messageId);
-  //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // });
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  });
 
-  // client.messages
-  //   .create({
-  //     body: textoutput,
-  //     from: process.env.messageFrom,
-  //     to: req.body.hostPhone
-  //   })
-  //   .then(message => {
-  //     res.render("contact", {
-  //       sms: "SMS has been sent to your Host",
-  //       msg: "Email has been sent to your Host"
-  //     });
-  //     console.log("Message SID: " + message.sid);
-  //   });
+  client.messages
+    .create({
+      body: textoutput,
+      from: process.env.messageFrom,
+      to: req.body.hostPhone
+    })
+    .then(message => {
+      res.render("contact", {
+        sms: "SMS has been sent to your Host",
+        msg: "Email has been sent to your Host"
+      });
+      console.log("Message SID: " + message.sid);
+    });
 
   console.log(textoutput);
 });
