@@ -116,6 +116,11 @@
 .button:disabled {
   border: 3px solid rgb(128, 128, 128);
 }
+.button:disabled:hover {
+  color: rgb(128, 128, 128);
+  cursor: initial;
+  background-color: initial;
+}
 
 /* #################### Add Host */
 .add-title {
