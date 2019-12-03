@@ -36,8 +36,9 @@
 
 .input-box {
   padding: 12px 20px;
-  margin: 8px;
-  width: 80%;
+  display: block;
+  margin: 8px auto;
+  width: 90%;
   box-sizing: border-box;
   border: none;
   border: 2px solid #f6f0e4;
@@ -92,6 +93,20 @@
   justify-content: center;
 }
 
+/* #################### Add Host */
+.add-title {
+  flex: 1;
+  align-self: flex-start;
+  font-family: "Bebas Neue";
+  font-style: italic;
+  font-size: 1.5em;
+}
+
+.add-container {
+  flex: 4;
+  align-self: flex-end;
+}
+
 /* Check In Check Out Buttons */
 .button {
   border: 3px solid #000;
@@ -117,16 +132,8 @@
   border: 3px solid rgb(128, 128, 128);
 }
 
-/* #################### Add Host */
-.add-title {
-  flex: 1;
-  align-self: flex-start;
-  font-family: "Bebas Neue";
-  font-style: italic;
-  font-size: 1.5em;
-}
-
-.add-container {
-  flex: 4;
-  align-self: flex-end;
+.button:disabled:hover {
+  color: rgb(128, 128, 128);
+  cursor: initial;
+  background-color: initial;
 }

@@ -6,15 +6,14 @@
     <link rel="shortcut icon" type="image/png" href="static/ico/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Visitor Management</title>
+    <title>Visitor Management | Developed by Mashu Ajmera</title>
     <link rel="stylesheet" href="static/css/style.css" />
 </head>
 
 <body id="" class="container">
     <h1 id="" class="at-center title">VISITOR MANAGEMENT</h1>
-    {{msg}} {{sms}} {{mail}}
     <form class="page-container" id="">
-        <h2 id="" class="at-center haeding">ENTER YOUR DETAILS</h2>
+        <h2 id="" class="at-center haeding">ENTER PERSONAL DETAILS</h2>
         <div id="" class="visitor-container">
             <div id="" class="input-field"><input type="text" id="visitor-name" class="input-box" name="visitorName"
                     placeholder="Full Name" required /></div>
@@ -23,19 +22,19 @@
             <div id="" class="input-field"><input type="email" name="visitorEmail" id="visitor-email" class="input-box"
                     placeholder="Email Address" required /></div>
         </div>
-        <h2 id="" class="at-center haeding">SELECT | ADD AS HOST</h2>
+        <h2 id="" class="at-center haeding">SELECT | ADD HOST</h2>
         <div id="host-container" class="host-container"></div>
         <div class="input-container" id="">
-            <h3 id="" class="add-title">ADD YOURSELF AS HOST</h3>
+            <h3 id="" class="add-title">ADD PERSON AS HOST</h3>
             <div id="" class="add-container">
                 <div id="" class="input-field"><input type="text" name="hostAddress" id="host-address" class="input-box"
                         placeholder="Enter Your Office Address" required /></div>
             </div>
         </div>
         <div class="button-container" id="">
-            <button id="addhost" class="button">ADD HOST</button>
             <button id="checkin" class="button">CHECK IN</button>
             <button id="checkout" class="button" type="reset" disabled>CHECK OUT</button>
+            <button id="addhost" class="button">ADD HOST</button>
         </div>
     </form>
     <script src="static/js/script.js"></script>

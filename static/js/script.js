@@ -30,6 +30,7 @@ var checkin = event => {
   };
 
   let hosts = document.getElementsByName("host");
+  var flag = false;
   for (var i = 0; i < hosts.length; i++) {
     if (hosts[i].checked) {
       visitor.hostName = document.getElementById(`host-${i}-name`).innerText;
@@ -38,36 +39,51 @@ var checkin = event => {
       visitor.addressVisited = document.getElementById(
         `host-${i}-address`
       ).innerText;
+      flag = true;
     }
   }
-
-  fetch("/checkin", {
-    method: "post",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body: JSON.stringify({
-      name: visitor.name,
-      email: visitor.email,
-      phone: visitor.phone,
-      checkin: visitor.checkin,
-      hostName: visitor.hostName,
-      hostEmail: visitor.hostEmail,
-      hostPhone: visitor.hostPhone,
-      addressVisited: visitor.addressVisited
+  if (
+    visitor.name == "" ||
+    visitor.name.length == 0 ||
+    visitor.name == null ||
+    visitor.phone == "" ||
+    visitor.phone.length == 0 ||
+    visitor.phone == null ||
+    visitor.email == "" ||
+    visitor.phone.length == 0 ||
+    visitor.phone == null ||
+    flag == false
+  ) {
+    alert("Please complete all the fields.");
+  } else {
+    fetch("/checkin", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        name: visitor.name,
+        email: visitor.email,
+        phone: visitor.phone,
+        checkin: visitor.checkin,
+        hostName: visitor.hostName,
+        hostEmail: visitor.hostEmail,
+        hostPhone: visitor.hostPhone,
+        addressVisited: visitor.addressVisited
+      })
     })
-  })
-    .then(function(res) {
-      console.log(res);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+      .then(function(res) {
+        console.log(res);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
 
-  document.getElementById("checkin").disabled = true;
-  document.getElementById("checkout").disabled = false;
+    document.getElementById("checkin").disabled = true;
+    document.getElementById("checkout").disabled = false;
 
-  console.log(visitor);
+    alert("The visit details have been sent.");
+  }
 };
 
 // Collecting Checkout Information
@@ -99,38 +115,58 @@ var checkout = event => {
   document.getElementById("checkout").disabled = true;
   document.getElementById("checkin").disabled = false;
 
-  console.log(visitor);
+  window.location.reload();
+  alert("The visitor has been checked out.");
 };
 
 // ########################## Add Host
 var addhost = event => {
-  fetch("/addhost", {
-    method: "post",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body: JSON.stringify({
-      hostName: document.getElementById("visitor-name").value,
-      hostPhone: document.getElementById("visitor-phone").value,
-      hostEmail: document.getElementById("visitor-email").value,
-      hostAddress: document.getElementById("host-address").value
+  var hostAddress = document.getElementById("host-address").value;
+  var hostName = document.getElementById("visitor-name").value;
+  var hostPhone = document.getElementById("visitor-phone").value;
+  var hostEmail = document.getElementById("visitor-email").value;
+  if (
+    hostAddress == "" ||
+    hostAddress.length == 0 ||
+    hostAddress == null ||
+    hostName == "" ||
+    hostName.length == 0 ||
+    hostName == null ||
+    hostPhone == "" ||
+    hostPhone.length == 0 ||
+    hostPhone == null ||
+    hostEmail == "" ||
+    hostEmail.length == 0 ||
+    hostEmail == null
+  ) {
+    alert("Please complete all the fields.");
+  } else {
+    fetch("/addhost", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        hostName,
+        hostPhone,
+        hostEmail,
+        hostAddress
+      })
     })
-  })
-    .then(function(res) {
-      console.log(res);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-  window.location.reload();
-  console.log("Host Added");
+      .then(function(res) {
+        console.log(res);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+    window.location.reload();
+    alert("The host has been added.");
+  }
 };
 
 // Function Calling
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("checkin").addEventListener("click", checkin);
   document.getElementById("addhost").addEventListener("click", addhost);
-  document
-    .getElementById("checkout")
-    .addEventListener("click", checkout, false);
+  document.getElementById("checkout").addEventListener("click", checkout);
 });
