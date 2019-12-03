@@ -80,6 +80,7 @@ var checkin = event => {
       });
 
     document.getElementById("checkin").disabled = true;
+    document.getElementById("addhost").disabled = true;
     document.getElementById("checkout").disabled = false;
 
     alert("The visit details have been sent.");
@@ -113,6 +114,7 @@ var checkout = event => {
     });
 
   document.getElementById("checkout").disabled = true;
+  document.getElementById("addhost").disabled = false;
   document.getElementById("checkin").disabled = false;
 
   window.location.reload();

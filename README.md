@@ -31,7 +31,7 @@ I have created a responsive website without using any built-in frontend library 
 ### Tech Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript
-- **Server** Environment: [Node.Js](https://nodejs.org/)
+- **Server Environment**: [Node.Js](https://nodejs.org/)
 - **Backend**: [Express Js](https://expressjs.com/)
 - **Database**: [MongoDb](https://www.mongodb.com/)
 
