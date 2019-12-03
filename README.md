@@ -62,7 +62,7 @@ I have created this responsive website **without** using any built-in frontend l
 # specify your port number here
 PORT= PORT NUMBER HERE
 
-# specify credentials of msg91 (messaging api) here.
+# specify credentials of Twilio (messaging api) here.
 accountSid = ACCOUNT SID HERE
 authToken = AUTHORIZATION TOKEN HERE
 messageFrom = YOUR VIRTUAL NUMBER HERE
@@ -70,10 +70,11 @@ messageFrom = YOUR VIRTUAL NUMBER HERE
 # MongoDb PORT
 MONGODB_URI = mongodb://localhost:27017/
 
-# specify credentials for nodemailer(email api) here, please enable less secure apps on gmail.
-mailUser = EMAIL ADDRRESS HERE (STRING)
-mailPass = PASSWORD OF THE EMAIL SPECIFIED ABOVE HERE (STRING)
-mailHost = HOST IP BY WHICH EMAILS WILL BE SENT (STRING)
+# specify credentials for nodemailer(email api) here.
+# please enable less secure apps on your mailing service if email doesn't get delivered.
+mailUser = EMAIL ADDRRESS HERE
+mailPass = PASSWORD OF THE EMAIL SPECIFIED ABOVE HERE
+mailHost = HOST IP BY WHICH EMAILS WILL BE SENT
 mailPORT = PORT OF YOUR MAIL SERVER (generally 587)
 ```
 
@@ -94,24 +95,30 @@ This is the medium size screen layout of the website. The size and number of box
 This is the small/ mobile screen layout of the website.  
 ![Mobile Layout](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Mobile%20View%20Landing%20Page.png?raw=true "Mobile Layout")
 
-The UI design and font inspiration has been taken from [Innovacer](http://innovaccer.com "Innovacer")'s website.
-
 ### Adding Host
 
 When an input box is hovered or selected, it glows and suggests what can be filled in. The _Add Host_ button turns black upon hover.  
 ![Add Host](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Add%20Host.png?raw=true)
 
-As the host is registered, an alert pops up, notifying the user about it.  
+As the host is added, an alert pops up, notifying the user about it.  
 ![Response of Adding Host](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Add%20Host%20Response.png?raw=true "Response of Adding Host")
 
 ### Checking In Visitor
 
-Upon selecting the host, it turn pink to give user the feedback.  
-![Checking in a New Visitor](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkin.png?raw=true "Checking in a New Visitor")
-
+Upon selecting the host, the box turns pink to let user know to know.  
+![Checking in a New Visitor](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkin.png?raw=true "Checking in a New Visitor") 
+  
+The user is notified with an alert that the message has been sent.  
+  
+The host is notified with a mail and SMS mentioning the visitor name, email address and phone number.
 ### Checking Out Visitor
 
 Without checking in, the user cannot check out, thus maintaining a clear line of flow.  
 ![Checking Out](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkout.png?raw=true "Checking Out")
+Upon checkout the user details is erased from the screen, making way for new user to check in. The information is obviously stored in the database for all these.
+The visitor is informed about the visit with an email.
 
-### Upon Unintended User Actions
+### Handling Unintended User Actions
+If the user doesn't fill all the required boxes, then an alert message pops up. Upon clicking *Ok*, the user is notified which textboxes are left unfilled.  
+  
+**Note**: The UI design and font inspiration has been taken from [Innovacer](http://innovaccer.com "Innovacer")'s website.
