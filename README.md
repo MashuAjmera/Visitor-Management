@@ -12,7 +12,7 @@ We need an application, which can capture the name, email address, phone no of t
 
 At the back end, once the user enters the information in the form, the backend should store all of the information with time stamp of the entry.
 
-This should trigger an email and an SMS to the host informing him of the details of the visitor. There should also be a provision of the checkout time which the guest can provide once he leaves. This should trigger an email to the guest with the complete form which should include:
+This should trigger an email and an SMS to the host informing him of the details of the visitor. There should also be a provision of the checkout time which the guest can provide once he leaves. This should trigger an email to the guest with the complete form.
 
 ## Approached Workflow
 
@@ -24,35 +24,41 @@ Once a visitor walks in, the receptionist shall ask the visitor his/her personal
 
 After the meeting or visit is over, and as the visitor gets out of the room, the receptionist presses check out. The visitor gets an email stating his visit details.
 
-## Tech Stack Used
+## Technology Used
 
-- Frontend: HTML5, CSS3, JavaScript
-- Server Environment: Node.Js
-- Backend: Express Js
-- Database: MongoDb
+I have created a responsive website without using any built-in frontend library (eg. bootstrap, jquery, etc.).
+
+### Tech Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Server** Environment: [Node.Js](https://nodejs.org/)
+- **Backend**: [Express Js](https://expressjs.com/)
+- **Database**: [MongoDb](https://www.mongodb.com/)
 
 ### Modules
 
-- Mail: [NodeMailer](https://nodemailer.com/about/)
-- SMS: [Twilio](https://www.twilio.com/)
+- **Mail**: [NodeMailer](https://nodemailer.com/about/)
+- **SMS**: [Twilio](https://www.twilio.com/)
 
 ## Installation Guidelines
 
 ### Prerequisite Softwares
 
-[Node JS](https://nodejs.org/en/download/) | [MongoDb](https://www.mongodb.com/download-center/community) | npm | git
+[Node JS](https://nodejs.org/en/download/) | [MongoDb](https://www.mongodb.com/download-center/community)
 
 ### Execution
 
 1.  open terminal at the desired location
-2.  clone this repository: `git clone https://github.com/MashuAjmera/Visitor-Management.git`
-3.  change directory: cd `Visitor-Management`
-4.  install dependencies: `npm install`
-5.  Generate Authentication key for Twilio api
-6.  Create a .env file and add below mentioned details in it.
+2.  clone this repository **or** [download here](https://github.com/MashuAjmera/Visitor-Management/archive/master.zip)
+    `git clone https://github.com/MashuAjmera/Visitor-Management.git`
+3.  change directory
+    `cd Visitor-Management`
+4.  install dependencies  
+    `npm install`
+5.  Generate Authentication key for Twilio api [here](https://www.twilio.com/try-twilio).
+6.  Create a **.env** file and add below mentioned details in it.
 
 ```
-
 # specify your port number here
 PORT= PORT NUMBER HERE
 
@@ -69,9 +75,9 @@ mailUser = EMAIL ADDRRESS HERE (STRING)
 mailPass = PASSWORD OF THE EMAIL SPECIFIED ABOVE HERE (STRING)
 mailHost = HOST IP BY WHICH EMAILS WILL BE SENT (STRING)
 mailPORT = PORT OF YOUR MAIL SERVER (generally 587)
-
 ```
 
-7.  connect MongoDb at PORT `27017`
-8.  start the server: `node app`
-9.  at the browser, go to `http://localhost:5000/`
+7.  connect MongoDb at PORT 27017
+8.  start the server  
+    `node app`
+9.  at the browser, go to `http://localhost:PORT/`
