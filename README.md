@@ -16,13 +16,25 @@ This should trigger an email and an SMS to the host informing him of the details
 
 ## Approached Workflow
 
+### Website Layout
+
 I have approached it primarily for co-working offices these days, where several workers from different companies share an office space with different cabins alloted.
 
-The reception at the office shall have the computer with the software setup. As new renters come, the receptionist shall save their personal details, cabin number as hosts in the software.
+![Landing Page of the Website](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Landing%20Page.png?raw=true)
 
+### Adding Host
+
+The reception at the office shall have the computer with the software setup. As new renters come, the receptionist shall save their personal details, cabin number as hosts in the software.
+![Add Host](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkin.png?raw=true "Checkin")
+![Response of Adding Host](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Add%20Host%20Response.png?raw=true "Response of Adding Host")
+###Checking In Visitor
 Once a visitor walks in, the receptionist shall ask the visitor his/her personal details and whom he/she has come to visit, enters it on the software, selects the hosts and presses check in. Once the visitor checks in, Host gets an email and an SMS stating the visitor details.
+![Checking in a New Visitor](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkin.png?raw=true "Checking in a New Visitor")
+
+### Checking Out Visitor
 
 After the meeting or visit is over, and as the visitor gets out of the room, the receptionist presses check out. The visitor gets an email stating his visit details.
+![Checking Out](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkout.png?raw=true "Checking Out")
 
 ## Technology Used
 
@@ -77,7 +89,6 @@ mailHost = HOST IP BY WHICH EMAILS WILL BE SENT (STRING)
 mailPORT = PORT OF YOUR MAIL SERVER (generally 587)
 ```
 
-7.  connect MongoDb at PORT 27017
-8.  start the server  
+7.  start the server  
     `node app`
-9.  at the browser, go to `http://localhost:PORT/`
+8.  at the browser, go to `http://localhost:PORT/`
