@@ -1,5 +1,7 @@
 // ################################# Initialize
-// Importing ibraries
+// Importing libraries
+
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
@@ -37,7 +39,7 @@ app.get("/", (req, res) => {
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
   host: process.env.mailHost,
-  port: 587,
+  port: process.env.mailPORT,
   secure: false,
   auth: {
     user: process.env.mailUser,
@@ -63,7 +65,7 @@ app.post("/checkin", (req, res) => {
   const textoutput = `New Visitor Request- Name: ${req.body.name}, Email: ${req.body.email}, Phone: ${req.body.phone}`;
 
   let mailOptions = {
-    from: '"Mashu Dopamine" <mashu@dopamineplanet.com>', // Server Email Address
+    from: `"Mashu Dopamine" <${process.env.mailUser}>`, // Server Email Address
     to: req.body.hostEmail, // Host Email Address
     subject: "New Visitor Request", // Subject line
     text: textoutput, // plain text body
@@ -86,7 +88,7 @@ app.post("/checkin", (req, res) => {
     dbo.collection("visitors").insertOne(newVisitor, function(err, res) {
       if (err) throw err;
       db.close();
-      console.log("New visitor added");
+      console.log(newVisitor);
     });
   });
 
@@ -105,10 +107,6 @@ app.post("/checkin", (req, res) => {
       to: req.body.hostPhone
     })
     .then(message => {
-      res.render("contact", {
-        sms: "SMS has been sent to your Host",
-        msg: "Email has been sent to your Host"
-      });
       console.log("Message SID: " + message.sid);
     });
 
@@ -132,10 +130,10 @@ app.post("/checkout", (req, res) => {
     </ul>
   `;
 
-  const textcheckoutput = `Visit Details- Name: ${req.body.name}, Phone: ${req.body.phone}, Check-in time: ${req.body.checkin}, Check-out Time: ${req.body.checkout}, Host Name: ${req.body.hostName}, Address Visited: ${req.body.addressVisited}`;
+  const textcheckoutput = `Your visit Details- Name: ${req.body.name}, Phone: ${req.body.phone}, Check-in time: ${req.body.checkin}, Check-out Time: ${req.body.checkout}, Host Name: ${req.body.hostName}, Address Visited: ${req.body.addressVisited}`;
 
   let mailOptions = {
-    from: '"Mashu Ajmera" <mashu@dopamineplanet.com>', // sender address
+    from: `"Mashu Dopamine" <${process.env.mailUser}>`, // sender address
     to: req.body.email, // list of receivers
     subject: "Your Visit Details", // Subject line
     text: textcheckoutput, // plain text body
@@ -167,7 +165,7 @@ app.post("/addhost", (req, res) => {
     dbo.collection("hosts").insertOne(newHost, function(err, res) {
       if (err) throw err;
       db.close();
-      console.log("New host added");
+      console.log(newHost);
     });
   });
 });
