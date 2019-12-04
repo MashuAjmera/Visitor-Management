@@ -86,18 +86,17 @@ mailPORT = PORT OF YOUR MAIL SERVER (generally 587)
 
 ### Website Layout
 
-This is how the website looks in desktop or large screen. It's a one page website with all the functionalities to reduce user hassle and make the user experience better. The checkout button is disabled because checkout is not possible without checking in.  
+This is how the website looks in desktop or large screen. It's a one page website with all the functionalities to reduce user hassle and make the UX better. The checkout button is disabled because checkout is not possible without checking in.  
 ![Landing Page of the Website](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Landing%20Page.png?raw=true)
 
 This is the medium size screen layout of the website. The size and number of boxes change to adjust to the screen size.
 ![Tablet Layout](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Tablet%20View%20Landing%20Page.png?raw=true "Tablet Layout")
 
-This is the small/ mobile screen layout of the website.  
+This is the small/ mobile screen layout of the website. The main text boxes have been kept above so that the screen doesn't shift while entering details with a touch screen device, thus in-line with the better UX approach that has been taken.  
 ![Mobile Layout](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Mobile%20View%20Landing%20Page.png?raw=true "Mobile Layout")
 
-### Adding Host
-
-When an input box is hovered or selected, it glows and suggests what can be filled in. The _Add Host_ button turns black upon hover.  
+### Adding the Host
+The input text boxes glow and the _Add Host_ button turns black when hovered on or in focus.  
 ![Add Host](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Add%20Host.png?raw=true)
 
 As the host is added, an alert pops up, notifying the user about it.  
@@ -105,7 +104,7 @@ As the host is added, an alert pops up, notifying the user about it.
 
 ### Checking In Visitor
 
-Upon selecting the host, the box turns pink to let user know to know.  
+When an input box is selected, it glows and suggests what can be filled in from the list of saved form entries. Upon hovering or selecting the host, the box turns pink to let the user know.  
 ![Checking in a New Visitor](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkin.png?raw=true "Checking in a New Visitor") 
   
 The user is notified with an alert that the message has been sent.  
@@ -114,13 +113,13 @@ The host is notified with a mail and SMS mentioning the visitor name, email addr
 ![Visitor Checkin Mail](https://raw.githubusercontent.com/MashuAjmera/Visitor-Management/master/static/img/Visitor%20Request%20mail.png)
 ### Checking Out Visitor
 
-Without checking in, the user cannot check out, thus maintaining a clear line of flow.  
+Without checking out, new visitor cannot check in, thus maintaining a clear line of flow.  
 ![Checking Out](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkout.png?raw=true "Checking Out")
-Upon checkout the user details is erased from the screen, making way for new user to check in. The information is obviously stored in the database for all these.
-The visitor is informed about the visit with an email.  
-![Visit details mail](https://raw.githubusercontent.com/MashuAjmera/Visitor-Management/master/static/img/Visitor%20Request%20mail.png)
+Upon checkout the visitor details are erased from the screen, making way for new user to check in. The information is obviously stored in the database for all these.  
+The visitor is informed about the visit with an email containing his name, email, phone number, check-in time, checkout time, host name and address visited.  
+![Visit details mail](https://raw.githubusercontent.com/MashuAjmera/Visitor-Management/master/static/img/visit%20details%20email.png)
 
 ### Handling Unintended User Actions
 If the user doesn't fill all the required boxes, then an alert message pops up. Upon clicking *Ok*, the user is notified which textboxes are left unfilled.  
   
-**Note**: The UI design and font inspiration has been taken from [Innovacer](http://innovaccer.com "Innovacer")'s website.
+**Note**: The UI design inspiration has been taken from [Innovacer](http://innovaccer.com "Innovacer")'s website.
