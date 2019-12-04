@@ -110,13 +110,15 @@ Upon selecting the host, the box turns pink to let user know to know.
   
 The user is notified with an alert that the message has been sent.  
   
-The host is notified with a mail and SMS mentioning the visitor name, email address and phone number.
+The host is notified with a mail and SMS mentioning the visitor name, email address and phone number.  
+![Visitor Checkin Mail](https://raw.githubusercontent.com/MashuAjmera/Visitor-Management/master/static/img/Visitor%20Request%20mail.png)
 ### Checking Out Visitor
 
 Without checking in, the user cannot check out, thus maintaining a clear line of flow.  
 ![Checking Out](https://github.com/MashuAjmera/Visitor-Management/blob/master/static/img/Checkout.png?raw=true "Checking Out")
 Upon checkout the user details is erased from the screen, making way for new user to check in. The information is obviously stored in the database for all these.
-The visitor is informed about the visit with an email.
+The visitor is informed about the visit with an email.  
+![Visit details mail](https://raw.githubusercontent.com/MashuAjmera/Visitor-Management/master/static/img/Visitor%20Request%20mail.png)
 
 ### Handling Unintended User Actions
 If the user doesn't fill all the required boxes, then an alert message pops up. Upon clicking *Ok*, the user is notified which textboxes are left unfilled.  
